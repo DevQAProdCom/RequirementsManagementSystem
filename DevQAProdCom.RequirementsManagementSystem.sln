@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "devqaprodcom.requirementsmanagementsystem.client", "devqaprodcom.requirementsmanagementsystem.client\devqaprodcom.requirementsmanagementsystem.client.esproj", "{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevQAProdCom.RequirementsManagementSystem.Server", "DevQAProdCom.RequirementsManagementSystem.Server\DevQAProdCom.RequirementsManagementSystem.Server.csproj", "{B71ED49A-0E5C-4419-976E-DCCBE1BFBC4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BC26365-2F64-B1BC-8EF0-7E174118CBA7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B71ED49A-0E5C-4419-976E-DCCBE1BFBC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71ED49A-0E5C-4419-976E-DCCBE1BFBC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71ED49A-0E5C-4419-976E-DCCBE1BFBC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71ED49A-0E5C-4419-976E-DCCBE1BFBC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0BAA7B4-5361-4149-B8D9-C8DA3B18DBDD}
+	EndGlobalSection
+EndGlobal

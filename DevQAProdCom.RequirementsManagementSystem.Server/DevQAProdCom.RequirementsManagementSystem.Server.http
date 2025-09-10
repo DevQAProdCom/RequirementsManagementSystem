@@ -1,0 +1,6 @@
+@DevQAProdCom.RequirementsManagementSystem.Server_HostAddress = http://localhost:5045
+
+GET {{DevQAProdCom.RequirementsManagementSystem.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
