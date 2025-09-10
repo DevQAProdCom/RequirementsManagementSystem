@@ -1,24 +1,182 @@
-﻿<h1 id="tableLabel">Weather forecast</h1>
+<head>
+  <meta charset="utf-8">
+  <title>Rms2Client</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
 
-<p>This component demonstrates fetching data from the server.</p>
+<div style="display: block;">
 
-<p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+  <div class="font-Revalia" style="display: flex; font-size: 40px; margin-bottom:10px; justify-content: center; align-items: center; text-align: center; width: 100%; background-color:blueviolet; height: 50px;">
+    <span>REQUIREMENTS MANAGEMENT SYSTEM (RMS)</span>
+  </div>
 
-<table *ngIf="forecasts">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.date }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
-        </tr>
-    </tbody>
-</table>
+  <div style="display: flex; flex-direction: row; width: 100%;">
+    <div style="width: 50%; display: flex; flex-direction: row; ">
+      <!-- Левая колонка, сюда можно добавить ваш контент -->
+      <app-text-input-with-label [value]="httpEndpoint"
+                                 [insideLabel]="'HTTP ENDPOINT'"
+                                 [outsideLabel]="'HTTP ENDPOINT:'"
+                                 (inputChanged)="onEndpointInputChange($event)"
+                                 style="flex: 1 1 0; min-width: 0;">
+      </app-text-input-with-label>
+
+      <label class="font-cascadia font-size-16px label-style">HTTP METHOD:</label>
+      <app-single-select [options]="httpMethods"
+                         entityName="HTTP METHOD"
+                         (valueSelected)="onHttpMethodSelected($event)">
+      </app-single-select>
+
+    </div>
+    <div style="width: 50%; display: flex; flex-direction: row; justify-content: flex-end;">
+      <!-- Правая колонка, сюда можно добавить ваш контент -->
+      <button matFab extended
+              style="height: 100%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+        <mat-icon style="margin-right: 8px;">
+          <span class="material-symbols-outlined">
+            cases
+          </span>
+        </mat-icon>
+        <span style="display: flex; align-items: center;">GENERATE MQA TEST CASES</span>
+      </button>
+
+      <button matFab extended
+              style="height: 100%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+        <mat-icon style="margin-right: 8px;">
+          <span class="material-symbols-outlined">
+            developer_mode_tv
+          </span>
+        </mat-icon>
+        <span style="display: flex; align-items: center;">
+          GENERATE DEV CODE
+        </span>
+      </button>
+
+
+      <button matFab extended
+              style="height: 100%; display: flex; align-items: center; justify-content: center;">
+        <mat-icon style="margin-right: 8px;">
+          <span class="material-symbols-outlined">
+            code_blocks
+          </span>
+        </mat-icon>
+        <span style="display: flex; align-items: center;">
+          GENERATE AQA CODE
+        </span>
+      </button>
+    </div>
+  </div>
+
+
+
+  <app-endpoint-tabs [httpEndpoint]="httpEndpoint" [httpMethod]="httpMethod"></app-endpoint-tabs>
+
+
+  </div>
+
+
+    <!--<div style="display: flex; flex-direction: row; width: 100%;">
+      <div style="width: 50%; background-color:aquamarine;">-->
+    <!-- Левая колонка, сюда можно добавить ваш контент -->
+    <!--<app-text-input-with-label [value]="httpEndpoint"
+                                 [insideLabel]="'HTTP ENDPOINT'"
+                                 [outsideLabel]="'HTTP ENDPOINT:'"
+                                 (inputChanged)="onEndpointInputChange($event)"
+                                 style="flex: 1 1 0; min-width: 0;">
+      </app-text-input-with-label>
+
+      <label class="font-cascadia font-size-16px" style="margin-right: 8px;">HTTP METHOD:</label>
+      <app-single-select [options]="httpMethods"
+                         entityName="HTTP METHOD"
+                         (valueSelected)="onHttpMethodSelected($event)">
+      </app-single-select>
+
+    </div>
+    <div style="width: 50%; background-color: blue;">-->
+    <!-- Правая колонка, сюда можно добавить ваш контент -->
+    <!--</div>
+    </div>-->
+    <!--<div style="display: flex; flex-direction: row; width: 100%;">
+      <div style="width: 50%; display: flex; flex-direction: row; align-items: center;">
+        <app-text-input-with-label [value]="httpEndpoint"
+                                   [insideLabel]="'HTTP ENDPOINT'"
+                                   [outsideLabel]="'HTTP ENDPOINT:'"
+                                   (inputChanged)="onEndpointInputChange($event)"
+                                   style="flex: 1 1 0; min-width: 0;">
+        </app-text-input-with-label>
+      </div>
+      <div style="width: 50%; display: flex; flex-direction: row; align-items: center;">
+        <label class="font-cascadia font-size-16px" style="margin-right: 8px;">HTTP METHOD:</label>
+        <app-single-select [options]="httpMethods"
+                           entityName="HTTP METHOD"
+                           (valueSelected)="onHttpMethodSelected($event)">
+        </app-single-select>
+      </div>
+    </div>-->
+    <!--<div style="display: flex; flex-direction: column; align-items: stretch; width: 100%;">
+      <div style="display: flex; flex-direction: row; width: 100%;">-->
+    <!--<label class="font-cascadia font-size-16px" style="flex: 0 0 auto; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 8px; align-self: center;">
+      SCENARIO NAME:
+    </label>-->
+    <!--<app-text-input-with-label [value]="httpEndpoint"
+                                   [insideLabel]="'HTTP ENDPOINT'"
+                                   [outsideLabel]="'HTTP ENDPOINT:'"
+                                   (inputChanged)="onEndpointInputChange($event)"
+                                   customWidth="50%"
+                                   style="flex: 1 1 0; min-width: 0;">
+        </app-text-input-with-label>
+
+        <label class="font-cascadia font-size-16px" style="vertical-align:bottom;">HTTP METHOD:</label>
+        <app-single-select [options]="httpMethods" entityName="HTTP METHOD" (valueSelected)="onHttpMethodSelected($event)"></app-single-select>
+      </div>
+    </div>-->
+    <!--<div style="display: flex; justify-content: space-between; width: 100%;">
+
+
+      <div style="display: flex; justify-content: flex-start; width: 50%; background-color:antiquewhite">
+        <app-text-input-with-label [value]="httpEndpoint" [insideLabel]="'HTTP ENDPOINT'" [outsideLabel]="'HTTP ENDPOINT:'" (inputChanged)="onEndpointInputChange($event)" [customWidth]="'500px'"></app-text-input-with-label>
+
+
+        <div>
+          <label class="font-cascadia font-size-16px" style="vertical-align:bottom;">HTTP METHOD:</label>
+          <app-single-select [options]="httpMethods" entityName="HTTP METHOD" (valueSelected)="onHttpMethodSelected($event)"></app-single-select>
+        </div>
+      </div>-->
+    <!--<div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+      <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+        <label style="vertical-align:bottom;" for="status-code" class="example-label">HTTP Method:</label>
+      </div>
+      <div style="vertical-align:bottom; background-color: forestgreen;">-->
+    <!--<app-autocomplete id="http-method" [options]="httpMethods" entityName="HTTP Method" (valueSelected)="onHttpMethodSelected($event)"></app-autocomplete>-->
+    <!--<app-single-select [options]="httpMethods" entityName="HTTP Method" (valueSelected)="onHttpMethodSelected($event)"></app-single-select>
+      </div>
+    </div>-->
+    <!--<div style="display: inline-flex; justify-content: flex-end; width: 50%;">-->
+    <!--<section>
+          <button matFab extended>
+            <mat-icon>cases</mat-icon>
+            GENERATE MQA TEST CASES
+          </button>
+          <button matFab extended>
+            <mat-icon>
+              <span class="material-symbols-outlined">
+                developer_mode_tv
+              </span>
+            </mat-icon>
+            GENERATE DEV CODE
+          </button>
+          <button matFab extended>
+            <mat-icon>
+              <span class="material-symbols-outlined">
+                code_blocks
+              </span>
+            </mat-icon>
+            GENERATE AQA CODE
+          </button>
+    </section>-->
+    <!--</div>-->
+    <!--<app-rms-api [httpEndpoint]="httpEndpoint"></app-rms-api>-->

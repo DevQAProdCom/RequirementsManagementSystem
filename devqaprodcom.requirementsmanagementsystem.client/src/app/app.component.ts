@@ -1,38 +1,37 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: false,
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
-  public forecasts: WeatherForecast[] = [];
 
-  constructor(private http: HttpClient) {}
+export class AppComponent implements OnInit {
+  httpEndpoint: string = '';
+  httpMethod: string = '';
+
+
+  httpMethods: string[] = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+  ];
+
+  constructor() {}
 
   ngOnInit() {
-    this.getForecasts();
+
   }
 
-  getForecasts() {
-    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(
-      (result) => {
-        this.forecasts = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  onEndpointInputChange(newValue: string) {
+    this.httpEndpoint = newValue;
   }
 
-  title = 'devqaprodcom.requirementsmanagementsystem.client';
+  onHttpMethodSelected(selectedValue: string) {
+    this.httpMethod = selectedValue;
+  }
 }
+

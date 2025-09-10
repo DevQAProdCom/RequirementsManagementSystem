@@ -1,0 +1,19 @@
+<!--<mat-form-field>
+  <mat-label>Select {{entityName}}</mat-label>
+  <mat-select [formControl]="formControl" (selectionChange)="selectionChange($event)" [(value)]="selected">
+    @for (option of options; track option) {
+    <mat-option [value]="option">{{option}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>-->
+
+
+
+<mat-form-field subscriptSizing="dynamic">
+  <mat-label class="font-cascadia font-size-13px">Select {{entityName}}</mat-label>
+  <mat-select class="custom-mat-select"  [(ngModel)]="selected" (selectionChange)="selectionChange($event)">
+    @for (option of options; track option) {
+    <mat-option class="mat-option" [value]="option">{{option}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,55 @@
+<!--<mat-tab-group>-->
+<!-- Динамические вкладки -->
+<!--<ng-container *ngFor="let tab of dynamicTabs">
+    <mat-tab [label]="tab.label">
+      <ng-container *ngComponentOutlet="tab.content"></ng-container>
+    </mat-tab>
+  </ng-container>
+</mat-tab-group>-->
+<!--<mat-tab-group>
+  <ng-container *ngFor="let tab of dynamicTabs;let i = index">
+    <mat-tab [label]="tab.label">
+      <ng-template #tabHost></ng-template>
+    </mat-tab>
+  </ng-container>
+  </mat-tab-group>-->
+
+
+  <mat-tab-group (selectedTabChange)="onTabClicked($event.index)">
+      <mat-tab  *ngFor="let tab of dynamicTabs; let i = index">
+        <ng-template mat-tab-label #tabHost>
+          <span
+            class="font-cascadia font-size-16px"
+            [ngStyle]="{
+              color: tab.label.startsWith('2') ? 'green' : (tab.label.startsWith('4') || tab.label.startsWith('5') ? 'red' : 'inherit')
+            }"
+            style="display: flex; align-items: center; justify-content: center;"
+          >
+            <mat-icon
+              style="vertical-align: middle; margin-right: 4px;"
+              [ngStyle]="{
+                color: tab.label.startsWith('2') ? 'green' : (tab.label.startsWith('4') || tab.label.startsWith('5') ? 'red' : 'inherit')
+              }"
+            >rule</mat-icon>
+            {{ tab.label }}
+          </span>
+        </ng-template>
+      </mat-tab>
+  </mat-tab-group>
+
+
+
+
+<!--<mat-tab *ngFor="let tab of dynamicTabs; let i = index" [label]="tab.label">
+  <ng-template #tabHost></ng-template>
+</mat-tab>-->
+<!--<mat-tab-group>
+   Динамические вкладки
+  <ng-container *ngFor="let tab of dynamicTabs">
+    <mat-tab [label]="tab.label">
+      <ng-container *ngIf="tab.content">
+        {{ tab.content }}
+      </ng-container>
+    </mat-tab>
+  </ng-container>
+</mat-tab-group>-->

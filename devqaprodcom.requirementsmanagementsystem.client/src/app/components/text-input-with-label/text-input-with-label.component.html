@@ -1,0 +1,35 @@
+
+
+<div style="display: flex; align-items: center;">
+  <label class="font-cascadia font-size-16px label-style">{{outsideLabel}}</label>
+  <mat-form-field subscriptSizing="dynamic"
+                  class="font-cascadia"
+                  [style.width]="customWidth">
+    <mat-label class="font-cascadia font-size-13px">Enter {{insideLabel}}</mat-label>
+    <input matInput  [(ngModel)]="value" (ngModelChange)="onInputChange($event)" class="font-cascadia" />
+  </mat-form-field>
+</div>
+
+
+
+
+<!--<div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+
+  <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+    <label style="vertical-align:bottom;" for="status-code" class="example-label">{{outsideLabel}}</label>
+  </div>
+  <div style="vertical-align:bottom; background-color: forestgreen;">
+    <mat-form-field class="example-full-width" style="width: 400px;">
+      <mat-label>Enter {{insideLabel}}</mat-label>
+      <input matInput [(ngModel)]="value" (ngModelChange)="onInputChange($event)" />
+    </mat-form-field>
+  </div>
+</div>-->
+<!--<div>
+  <label class="font-cascadia font-size-16px">{{outsideLabel}}</label>
+
+  <mat-form-field subscriptSizing="dynamic" class="font-cascadia">
+    <mat-label class="font-cascadia" style="font-size: 13px;">Enter {{insideLabel}}</mat-label>
+    <input matInput [(ngModel)]="value" (ngModelChange)="onInputChange($event)" class="font-cascadia" />
+  </mat-form-field>
+</div>-->

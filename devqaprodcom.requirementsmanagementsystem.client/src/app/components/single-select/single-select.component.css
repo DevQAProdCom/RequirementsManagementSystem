@@ -1,0 +1,14 @@
+.custom-mat-select {
+  font-family: 'Libertinus Keyboard', monospace;
+  font-size: 20px;
+}
+
+  .custom-mat-select .mat-select-value {
+    font-family: 'Libertinus Keyboard', monospace;
+    font-size: 20px;
+  }
+
+.mat-option {
+  font-family: 'Libertinus Keyboard', monospace;
+  font-size: 20px;
+}

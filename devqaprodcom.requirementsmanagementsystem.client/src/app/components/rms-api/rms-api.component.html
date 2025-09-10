@@ -1,0 +1,372 @@
+<div style="display: flex; flex-direction: column; align-items: stretch; width: 100%;">
+  <div style="display: flex; flex-direction: row; width: 100%;">
+    <!--<label class="font-cascadia font-size-16px" style="flex: 0 0 auto; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 8px; align-self: center;">
+      SCENARIO NAME:
+    </label>-->
+    <app-text-input-with-label [insideLabel]="'SCENARIO NAME'"
+                               [outsideLabel]="'SCENARIO NAME:'"
+                               customWidth="100%"
+                               style="flex: 1 1 0; min-width: 0;">
+    </app-text-input-with-label>
+  </div>
+</div>
+
+
+
+<mat-divider style="margin-top:6px;"></mat-divider>
+<br>
+
+<div style=" width:100%; display: inline-flex">
+
+  <div style=" width:50%; margin-right: 10px;">
+
+    <div style="display: grid; grid-template-columns: max-content 1fr; width: 100%; row-gap: 16px;">
+
+      <!-- #row-status-code -->
+      <div style="display: contents;">
+        <div id="row-status-code-label" style="display: flex; align-items: center; justify-content: flex-start; padding-right: 12px;">
+          <label class="font-cascadia font-size-16px" for="status-code" style="width: 100%; text-align: left;">STATUS CODE:</label>
+        </div>
+        <div id="row-status-code-control" style="display: flex; align-items: flex-start; justify-content: flex-start;">
+          <app-autocomplete id="status-code"
+                            [options]="statusCodes"
+                            entityName="STATUS CODE"
+                            (valueSelected)="onStatusCodeSelected($event)"
+                            style="width: 350px;">
+          </app-autocomplete>
+        </div>
+      </div>
+
+      <!-- #row-roles -->
+      <div style="display: contents;">
+        <div id="row-status-code-label" style="display: flex; align-items: center; justify-content: flex-start; padding-right: 12px;">
+          <label class="font-cascadia font-size-16px" for="roles" style="width: 100%; text-align: left;">ROLES:</label>
+        </div>
+        <div id="row-status-code-control" style="display: flex; align-items: flex-start; justify-content: flex-start;">
+          <app-checkbox-multi-select id="roles"
+                                     [options]="roles"
+                                     entityName="ROLES"
+                                     (valueSelected)="onRolesSelected($event)"
+                                     style="width: 100%;">
+          </app-checkbox-multi-select>
+        </div>
+      </div>
+
+      <!-- #row-permissions -->
+      <div style="display: contents;">
+        <div id="row-permissions-label" style="display: flex; align-items: center; justify-content: flex-start; padding-right: 12px;">
+          <label class="font-cascadia font-size-16px" for="permissions" style="width: 100%; text-align: left;">PERMISSIONS:</label>
+        </div>
+        <div id="row-permissions-control" style="display: flex; align-items: flex-start; justify-content: flex-start;">
+          <app-checkbox-multi-select id="permissions"
+                                     [options]="permissions"
+                                     entityName="PERMISSIONS"
+                                     (valueSelected)="onPermissionsSelected($event)"
+                                     style="width: 100%;">
+          </app-checkbox-multi-select>
+        </div>
+      </div>
+
+      <!-- #row-content-type -->
+      <div style="display: contents;">
+        <div id="row-content-type-label" style="display: flex; align-items: center; justify-content: flex-start; padding-right: 12px;">
+          <label class="font-cascadia font-size-16px" for="content-type" style="width: 100%; text-align: left;">CONTENT TYPE:</label>
+        </div>
+        <div id="row-content-type-control" style="display: flex; align-items: flex-start; justify-content: flex-start;">
+          <app-autocomplete id="content-type"
+                            [options]="contentTypes"
+                            entityName="CONTENT TYPE"
+                            (valueSelected)="onContentTypeSelected($event)"
+                            style="width: 350px;">
+          </app-autocomplete>
+        </div>
+      </div>
+
+      <!-- #row-message -->
+      <div style="display: contents; visibility:hidden" #MessageInput>
+        <div id="row-message-label" style="display: flex; align-items: center; justify-content: flex-start; padding-right: 12px;">
+          <label class="font-cascadia font-size-16px" for="content-type" style="width: 100%; text-align: left;">MESSAGE:</label>
+        </div>
+        <div id="row-message-control" style="display: flex; align-items: flex-start; justify-content: flex-start;">
+          <app-text-input [label]="'Message'" (inputChanged)="onMessageEntered($event)" style="width:100%"></app-text-input>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+    <app-endpoint-body-table-2 (jsonSchemaChanged)="jsonSchemaChanged($event)" style="visibility:hidden" #EndpointBodyTable></app-endpoint-body-table-2>
+
+  </div>
+
+  <div id="givenWhenThenArea" style=" width:50%; align-items:flex-start; display: flex; flex-direction: column; align-items: flex-start;" #GivenWhenThenArea>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div style="display: grid; grid-template-rows: repeat(4, auto); grid-template-columns: 40% 60%; width: 100%; gap: 0;">-->
+<!-- #row-status-code -->
+<!--<div style="grid-row: 1; display: grid; grid-template-columns: max-content 1fr;">
+  <div id="row-status-code-label" style="grid-column: 1; align-items: center; justify-content: start; padding-right: 12px;">
+    <label class="example-label" for="status-code" style="width: 100%;">STATUS CODE:</label>
+  </div>
+  <div id="row-status-code-control" style="grid-column: 2; align-items: center;">
+    <app-autocomplete id="status-code"
+                      [options]="statusCodes"
+                      entityName="STATUS CODE"
+                      (valueSelected)="onStatusCodeSelected($event)">
+    </app-autocomplete>
+  </div>
+</div>-->
+<!-- #row-roles -->
+<!--<div style="grid-row: 2; display: grid; grid-template-columns: max-content 1fr;">
+  <div id="row-roles-label" style="grid-column: 1; align-items: center; justify-content: start; padding-right: 12px; ">
+    <label class="example-label" for="status-code" style="width: 100%;">ROLES:</label>
+  </div>
+  <div id="row-roles-control" style="grid-column: 2; align-items: center;">
+    <app-checkbox-multi-select id="roles"
+                               [options]="roles"
+                               entityName="ROLES"
+                               (valueSelected)="onRolesSelected($event)">
+    </app-checkbox-multi-select>
+  </div>
+</div>-->
+<!-- #row-roles -->
+<!--<div style="grid-column: 1 / span 2;">
+  <div id="row-roles-label" style="display: flex; align-items: center; justify-content: flex-end; padding-right: 12px;">
+    <label class="example-label" for="roles" style="width: 100%;">ROLES:</label>
+  </div>
+  <div id="row-roles-control" style="display: flex; align-items: center;">
+    <app-checkbox-multi-select id="roles"
+                               [options]="roles"
+                               entityName="ROLES"
+                               (valueSelected)="onRolesSelected($event)">
+    </app-checkbox-multi-select>
+  </div>
+</div>-->
+<!-- #row-permissions -->
+<!--<div style="grid-column: 1 / span 2;">
+  <div id="row-permissions-label" style="display: flex; align-items: center; justify-content: flex-end; padding-right: 12px;">
+    <label class="example-label" for="permissions" style="width: 100%;">PERMISSIONS:</label>
+  </div>
+  <div id="row-permissions-control" style="display: flex; align-items: center;">
+    <app-checkbox-multi-select id="permissions"
+                               [options]="permissions"
+                               entityName="PERMISSIONS"
+                               (valueSelected)="onPermissionsSelected($event)">
+    </app-checkbox-multi-select>
+  </div>
+</div>-->
+<!-- #row-content-type -->
+<!--<div style="grid-column: 1 / span 2;">
+  <div id="row-content-type-label" style="display: flex; align-items: center; justify-content: flex-end; padding-right: 12px;">
+    <label class="example-label" for="content-type" style="width: 100%;">CONTENT TYPE:</label>
+  </div>
+  <div id="row-content-type-control" style="display: flex; align-items: center;">
+    <app-autocomplete id="content-type"
+                      [options]="contentTypes"
+                      entityName="CONTENT TYPE"
+                      (valueSelected)="onContentTypeSelected($event)">
+    </app-autocomplete>
+  </div>
+</div>-->
+<!--</div>-->
+<!--<div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 0;">
+  <div style="display: grid; grid-template-columns: 40% 60%; width: 100%;">-->
+<!-- Левая колонка: метки -->
+<!--<div style="display: flex; flex-direction: column; align-items: flex-end; padding-right: 12px; height: 100%;">
+  <div style="display: flex; align-items: center; height: 100%;">
+    <label class="example-label" for="status-code" style="width: 100%;">STATUS CODE:</label>
+  </div>
+  <div style="display: flex; align-items: center; height: 100%;">
+    <label class="example-label" for="roles" style="width: 100%;">ROLES:</label>
+  </div>
+  <div style="display: flex; align-items: center; height: 100%;">
+    <label class="example-label" for="permissions" style="width: 100%;">PERMISSIONS:</label>
+  </div>
+  <div style="display: flex; align-items: center; height: 100%;">
+    <label class="example-label" for="content-type" style="width: 100%;">CONTENT TYPE:</label>
+  </div>
+</div>-->
+<!-- Правая колонка: компоненты -->
+<!--<div style="display: flex; flex-direction: column; height: 100%;">
+      <div style="display: flex; align-items: center;">
+        <app-autocomplete id="status-code"
+                          [options]="statusCodes"
+                          entityName="STATUS CODE"
+                          (valueSelected)="onStatusCodeSelected($event)">
+        </app-autocomplete>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <app-checkbox-multi-select id="roles"
+                                   [options]="roles"
+                                   entityName="ROLES"
+                                   (valueSelected)="onRolesSelected($event)">
+        </app-checkbox-multi-select>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <app-checkbox-multi-select id="permissions"
+                                   [options]="permissions"
+                                   entityName="PERMISSIONS"
+                                   (valueSelected)="onPermissionsSelected($event)">
+        </app-checkbox-multi-select>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <app-autocomplete id="content-type"
+                          [options]="contentTypes"
+                          entityName="CONTENT TYPE"
+                          (valueSelected)="onContentTypeSelected($event)">
+        </app-autocomplete>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div id="givenWhenThenArea" style="align-items:flex-start; display: flex; flex-direction: column; align-items: flex-start;" #GivenWhenThenArea>
+    </div>
+  </div>
+</div>-->
+<!--<div style="display: flex; flex-direction: row; width: 100%;">
+  <div style="width: 50%;">-->
+<!-- Левая колонка: метки -->
+<!--<div style="display: flex; flex-direction: column; width: 40%; align-items: flex-end; padding-right: 12px;">
+  <label class="example-label" for="status-code">STATUS CODE:</label>
+  <label class="example-label" for="roles">ROLES:</label>
+  <label class="example-label" for="permissions">PERMISSIONS:</label>
+  <label class="example-label" for="content-type">CONTENT TYPE:</label>
+</div>-->
+<!-- Правая колонка: компоненты -->
+<!--<div style="display: flex; flex-direction: column; width: 60%;">
+
+      <app-autocomplete id="status-code"
+                        [options]="statusCodes"
+                        entityName="STATUS CODE"
+                        (valueSelected)="onStatusCodeSelected($event)">
+      </app-autocomplete>
+      <app-checkbox-multi-select id="roles"
+                                 [options]="roles"
+                                 entityName="ROLES"
+                                 (valueSelected)="onRolesSelected($event)">
+      </app-checkbox-multi-select>
+      <app-checkbox-multi-select id="permissions"
+                                 [options]="permissions"
+                                 entityName="PERMISSIONS"
+                                 (valueSelected)="onPermissionsSelected($event)">
+      </app-checkbox-multi-select>
+      <app-autocomplete id="content-type"
+                        [options]="contentTypes"
+                        entityName="CONTENT TYPE"
+                        (valueSelected)="onContentTypeSelected($event)">
+      </app-autocomplete>
+    </div>
+  </div>
+
+  <div style="width: 50%;">
+    <div id="givenWhenThenArea" style="align-items:flex-start; display: flex; flex-direction: column; align-items: flex-start;" #GivenWhenThenArea>
+    </div>
+  </div>
+
+
+</div>-->
+<!--<div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+  <div style="display: flex; flex-direction: column; align-items: flex-start; width: 50%;">-->
+<!--Status Code-->
+<!--<div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+
+  <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+    <label style="vertical-align:bottom;" for="status-code" class="example-label">STATUS CODE:</label>
+  </div>
+  <div style="vertical-align:bottom; background-color: forestgreen;">
+    <app-autocomplete id="status-code" [options]="statusCodes" entityName="STATUS CODE" (valueSelected)="onStatusCodeSelected($event)"></app-autocomplete>
+  </div>
+
+</div>-->
+<!--HTTP Method-->
+<!--<br />
+
+<div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+
+  <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+    <label style="vertical-align:bottom;" for="status-code" class="example-label">HTTP Method:</label>
+  </div>
+  <div style="vertical-align:bottom; background-color: forestgreen;">
+    <app-autocomplete id="http-method" [options]="httpMethods" entityName="HTTP Method" (valueSelected)="onHttpMethodSelected($event)"></app-autocomplete>
+  </div>
+
+</div>-->
+<!--Roles-->
+<!--<br />
+
+<div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+  <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+    <label style="vertical-align:bottom;" for="status-code" class="example-label">ROLES:</label>
+  </div>
+  <div style="vertical-align:bottom; background-color: forestgreen;">
+    <app-checkbox-multi-select id="roles" [options]="roles" entityName="ROLES" (valueSelected)="onRolesSelected($event)"></app-checkbox-multi-select>
+  </div>
+</div>-->
+<!--Permissions-->
+<!--<br />
+
+<div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+  <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+    <label style="vertical-align:bottom;" for="status-code" class="example-label">PERMISSIONS:</label>
+  </div>
+  <div style="vertical-align:bottom; background-color: forestgreen;">
+    <app-checkbox-multi-select id="permissions" [options]="permissions" entityName="PERMISSIONS" (valueSelected)="onPermissionsSelected($event)"></app-checkbox-multi-select>
+  </div>
+</div>-->
+<!--Content Type-->
+<!--<br />
+  <div style="display: inline-flex; align-content: flex-end; vertical-align: central; text-align: center; width:auto;">
+
+    <div style="vertical-align:bottom; background-color: yellow; align-content:safe center">
+      <label style="vertical-align:bottom;" for="content-type" class="example-label">CONTENT TYPE:</label>
+    </div>
+    <div style="vertical-align:bottom; background-color: forestgreen;">
+      <app-autocomplete id="content-type" [options]="contentTypes" entityName="CONTENT TYPE" (valueSelected)="onContentTypeSelected($event)"></app-autocomplete>
+    </div>
+
+  </div>
+
+  <app-endpoint-body-table-2 (jsonSchemaChanged)="jsonSchemaChanged($event)" style="visibility:hidden" #EndpointBodyTable></app-endpoint-body-table-2>
+
+</div>
+
+
+
+<div id="givenWhenThenArea" style="align-items:flex-start; display: flex; flex-direction: column; align-items: flex-start;" #GivenWhenThenArea>
+
+</div>-->
+<!--<div style="align-items:flex-start; display: flex; flex-direction: column; align-items: flex-start;" #GivenWhenThenArea>-->
+<!--<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <textarea matInput id="BDDTextArea" #BDDTextArea ></textarea>
+  </mat-form-field>
+</form>-->
+<!--<app-json-schema-and-example #AppJsonSchemaAndExample></app-json-schema-and-example>-->
+<!--</div>-->
+<!--<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</form>-->
+<!--</div>-->

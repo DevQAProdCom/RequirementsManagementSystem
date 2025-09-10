@@ -1,0 +1,4 @@
+  <mat-form-field subscriptSizing="dynamic" class="font-cascadia" style="width: 100%">
+    <mat-label class="font-cascadia font-size-13px">Enter {{label}}</mat-label>
+    <input matInput [(ngModel)]="value" (ngModelChange)="onInputChange($event)" class="font-cascadia" />
+  </mat-form-field>
